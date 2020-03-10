@@ -1,62 +1,22 @@
-# Enter your code here. Read input from STDIN. Print output to STDOUT
+num =int(input())
+arr = input().split()
+arr2  = input().split()
 
-# read input from file/user
-import sys
-
-userInput = sys.stdin.readlines()
-# print(userInput)
-arr = [];
-arra = []
-
-arrayLen = int(userInput[0])
-# print(arrayLen)
-
-for i in range(1, len(userInput)):
-    arr.append(userInput[i])
+array=[];array2 =[]
 
 for i in arr:
-    x = i.split()
+    array.append(int(i))
 
-for i in x:
-    arra.append(int(i))
+for i in arr2:
+    array2.append(int(i))
 
-# perform summary statistics
-if len(arra) == arrayLen:
-    # mean
-    mean = sum(arra) / arrayLen
+# print(num,'\n', array, '\n', array2)
 
-    # median
-    arra.sort()
-    if arrayLen % 2 != 0:
-        median = arra[arrayLen // 2]
-        print(arra)
-    else:
-        medianIndex = arrayLen // 2
-        median = (arra[medianIndex] + arra[medianIndex - 1]) / 2
+add = 0
 
-    # mode
-    dico = {}
-    low_mode = 0
+for i in range(num):
+    add+=array[i]*array2[i]
 
-    # gather frequency
-    for i in range(arrayLen):
-        total = 0
-        for num in arra:
-            # if num equals my current index value
-            if num == arra[i]:
-                total += 1
-                dico[num] = total
+wm = add/sum(array2)
 
-    # check for modal key
-    for k, v in dico.items():
-        if v > low_mode:
-            low_mode = v
-            modal = k
-    if low_mode == 1:
-        mode = arra[0]
-    else:
-        mode = modal
-
-print("{0:.1f}".format(mean))
-print("{0:.1f}".format(median))
-print(mode)
+print(round(wm,1))
